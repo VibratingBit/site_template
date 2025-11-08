@@ -2,72 +2,45 @@
 <html lang="en">
 
 <head> 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+.container {
+    display: inline-block;
+    cursor: pointer;
+  }
 
-.mobile-container {
-  max-width: 480px;
-  margin: auto;
-  background-color: #555;
-  height: 500px;
-  color: white;
-  border-radius: 10px;
-}
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-  position: relative;
-}
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
 
-.topnav #myLinks {
-  display: none;
-}
+  .change .bar2 {opacity: 0;}
 
-.topnav a {
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
-}
-
-.topnav a.icon {
-  background: black;
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.active {
-  background-color: #04AA6D;
-  color: white;
-}
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
 </style>
-		<!-- Top Navigation Menu -->
-		<div class="topnav">
-		  <a href="#home" class="active">Logo</a>
-		  <!-- Navigation links (hidden by default) -->
-		  <div id="myLinks">
-		    <a href="#news">News</a>
-		    <a href="#contact">Contact</a>
-		    <a href="#about">About</a>
-		  </div>
-		  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-		  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-		    <i class="fa fa-bars"></i>
-		  </a>
-		</div>
+
+<div class="container" onclick="ShowHide(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div>
+
+<div id="Menu" style="width: 150px; background-color: rgb(217, 231, 255); display: none;">
+  <h2><a href="#1">Item 1</a></h2>
+  <h2><a href="#2">Item 2</a></h2>
+  <h2><a href="#3">Item 3</a></h2>
+</div>
 
 	   
 
@@ -100,14 +73,16 @@ body {
 
 
 <script>
-function myFunction() {
-  var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
+Menu.style.display = "none";
+function ShowHide(x) {
+  x.classList.toggle("change");
+  var Menu = document.getElementById("Menu");
+  if (Menu.style.display === "none") {
+    Menu.style.display = "block";
   } else {
-    x.style.display = "block";
+    Menu.style.display = "none";
   }
-} 
+}
 </script>
 
 
